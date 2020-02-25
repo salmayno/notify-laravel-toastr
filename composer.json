@@ -1,0 +1,20 @@
+{
+    "name": "yoeunes/notify-laravel-toastr",
+    "license": "MIT",
+    "require": {
+        "yoeunes/notify-laravel": "@dev",
+        "yoeunes/notify-toastr": "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yoeunes\\Notify\\Toastr\\Laravel\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Yoeunes\\Notify\\Toastr\\Laravel\\NotifyToastrServiceProvider"
+            ]
+        }
+    }
+}
