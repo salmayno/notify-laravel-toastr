@@ -2,14 +2,17 @@
 
 namespace Yoeunes\Notify\Toastr\Laravel;
 
-use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use Yoeunes\Notify\Laravel\Session\Session;
-use Yoeunes\Notify\NotifyManager;
-use Yoeunes\Notify\Toastr\Factories\ToastrFactory;
+use Yoeunes\Notify\Toastr\Laravel\ServiceProvider\ServiceProviderManager;
 
 class NotifyToastrServiceProvider extends ServiceProvider
 {
+    public function boot()
+    {
+        $manager = new ServiceProviderManager($this);
+        $manager->boot();
+    }
+
     /**
      * Register the service provider.
      *
@@ -17,19 +20,43 @@ class NotifyToastrServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerToastrFactory();
+        $manager = new ServiceProviderManager($this);
+        $manager->register();
     }
 
-    public function registerToastrFactory()
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return string[]
+     */
+    public function provides()
     {
-        $this->app->extend('notify', function (NotifyManager $manager, Application $app) {
-            $session = $app['session'];
+        return array(
+            'notify.toastr',
+        );
+    }
 
-            $manager->extend('toastr', function ($config) use ($session) {
-                return new ToastrFactory($config, new Session($session));
-            });
+    /**
+     * @return \Illuminate\Container\Container
+     */
+    public function getApplication()
+    {
+        return $this->app;
+    }
 
-            return $manager;
-        });
+    /**
+     * {@inheritdoc}
+     */
+    public function mergeConfigFrom($path, $key)
+    {
+        parent::mergeConfigFrom($path, $key);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function publishes(array $paths, $groups = null)
+    {
+        parent::publishes($paths, $groups);
     }
 }
