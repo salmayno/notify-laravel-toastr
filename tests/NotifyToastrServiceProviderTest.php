@@ -2,8 +2,6 @@
 
 namespace Yoeunes\Notify\Toastr\Laravel\Tests;
 
-use Yoeunes\Notify\NotifyManager;
-
 class NotifyToastrServiceProviderTest extends TestCase
 {
     public function test_container_contain_notify_services()

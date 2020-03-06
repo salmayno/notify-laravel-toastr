@@ -16,4 +16,13 @@ final class Laravel4 extends Laravel
     {
         $provider->package('yoeunes/notify-laravel-toastr', 'notify_toastr', __DIR__.'/../../../resources');
     }
+
+    public function mergeConfigFromToastr()
+    {
+        $notifyConfig = $this->app['config']->get('notify::config.notifiers.toastr', array());
+
+        $toastrConfig = $this->app['config']->get('notify_toastr::config', array());
+
+        $this->app['config']->set('notify::config.notifiers.toastr', array_merge($toastrConfig, $notifyConfig));
+    }
 }
