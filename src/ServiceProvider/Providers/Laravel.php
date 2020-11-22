@@ -1,12 +1,12 @@
 <?php
 
-namespace Yoeunes\Notify\Toastr\Laravel\ServiceProvider\Providers;
+namespace Notify\Toastr\Laravel\ServiceProvider\Providers;
 
 use Illuminate\Container\Container;
 use Illuminate\Foundation\Application;
-use Yoeunes\Notify\NotifyManager;
-use Yoeunes\Notify\Toastr\Factory\ToastrFactory;
-use Yoeunes\Notify\Toastr\Laravel\NotifyToastrServiceProvider;
+use Notify\NotifyManager;
+use Notify\Toastr\Factory\ToastrFactory;
+use Notify\Toastr\Laravel\NotifyToastrServiceProvider;
 
 class Laravel implements ServiceProviderInterface
 {

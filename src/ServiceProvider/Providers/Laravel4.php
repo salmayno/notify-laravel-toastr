@@ -1,9 +1,9 @@
 <?php
 
-namespace Yoeunes\Notify\Toastr\Laravel\ServiceProvider\Providers;
+namespace Notify\Toastr\Laravel\ServiceProvider\Providers;
 
 use Illuminate\Foundation\Application;
-use Yoeunes\Notify\Toastr\Laravel\NotifyToastrServiceProvider;
+use Notify\Toastr\Laravel\NotifyToastrServiceProvider;
 
 final class Laravel4 extends Laravel
 {
@@ -14,7 +14,7 @@ final class Laravel4 extends Laravel
 
     public function publishConfig(NotifyToastrServiceProvider $provider)
     {
-        $provider->package('yoeunes/notify-laravel-toastr', 'notify_toastr', __DIR__.'/../../../resources');
+        $provider->package('php-notify/notify-laravel-toastr', 'notify_toastr', __DIR__.'/../../../resources');
     }
 
     public function mergeConfigFromToastr()

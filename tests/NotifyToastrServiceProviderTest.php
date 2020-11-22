@@ -1,6 +1,6 @@
 <?php
 
-namespace Yoeunes\Notify\Toastr\Laravel\Tests;
+namespace Notify\Toastr\Laravel\Tests;
 
 class NotifyToastrServiceProviderTest extends TestCase
 {

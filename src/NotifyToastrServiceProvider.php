@@ -1,9 +1,9 @@
 <?php
 
-namespace Yoeunes\Notify\Toastr\Laravel;
+namespace Notify\Toastr\Laravel;
 
 use Illuminate\Support\ServiceProvider;
-use Yoeunes\Notify\Toastr\Laravel\ServiceProvider\ServiceProviderManager;
+use Notify\Toastr\Laravel\ServiceProvider\ServiceProviderManager;
 
 class NotifyToastrServiceProvider extends ServiceProvider
 {

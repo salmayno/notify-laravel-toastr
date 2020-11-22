@@ -1,8 +1,8 @@
 <?php
 
-namespace Yoeunes\Notify\Toastr\Laravel\ServiceProvider\Providers;
+namespace Notify\Toastr\Laravel\ServiceProvider\Providers;
 
-use Yoeunes\Notify\Toastr\Laravel\NotifyToastrServiceProvider;
+use Notify\Toastr\Laravel\NotifyToastrServiceProvider;
 
 interface ServiceProviderInterface
 {
