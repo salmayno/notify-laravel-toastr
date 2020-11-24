@@ -40,11 +40,7 @@ class Laravel implements ServiceProviderInterface
         });
 
         $this->app->singleton('notify.renderer.toastr', function (Container $app) {
-            return new ToastrRenderer(
-                $app['notify.config']->get('adapters.toastr.scripts', array()),
-                $app['notify.config']->get('adapters.toastr.styles', array()),
-                $app['notify.config']->get('adapters.toastr.options', array())
-            );
+            return new ToastrRenderer($app['notify.config']);
         });
 
         $this->app->alias('notify.producer.toastr', 'Notify\Toastr\Producer\ToastrProducer');
