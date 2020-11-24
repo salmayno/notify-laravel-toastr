@@ -35,11 +35,11 @@ class Laravel implements ServiceProviderInterface
 
     public function registerNotifyToastrServices()
     {
-        $this->app->bind('notify.producer.toastr', function (Container $app) {
+        $this->app->singleton('notify.producer.toastr', function (Container $app) {
             return new ToastrProducer($app['notify.storage'], $app['notify.middleware']);
         });
 
-        $this->app->bind('notify.renderer.toastr', function (Container $app) {
+        $this->app->singleton('notify.renderer.toastr', function (Container $app) {
             return new ToastrRenderer(
                 $app['notify.config']->get('adapters.toastr.scripts', array()),
                 $app['notify.config']->get('adapters.toastr.styles', array()),
