@@ -1,6 +1,6 @@
 <?php
 
-namespace Notify\Toastr\Laravel\Tests;
+namespace Notify\Laravel\Toastr\Tests;
 
 use Illuminate\Foundation\Application;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -15,8 +15,8 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app = null)
     {
         return array(
-            'Yoeunes\Notify\Laravel\NotifyServiceProvider',
-            'Yoeunes\Notify\Toastr\Laravel\NotifyToastrServiceProvider',
+            'Notify\Laravel\NotifyServiceProvider',
+            'Notify\Laravel\Toastr\NotifyToastrServiceProvider',
         );
     }
 
@@ -28,7 +28,8 @@ class TestCase extends Orchestra
         $separator = $this->isLaravel4() ? '::config' : '';
 
         $app['config']->set('session'.$separator.'.driver', 'array');
-        $app['config']->set('notify'.$separator.'.notifiers', array(
+        $app['config']->set('notify'.$separator.'.stamps_middlewares', array());
+        $app['config']->set('notify'.$separator.'.adapters', array(
             'toastr' => array('scripts' => array('jquery.js')),
             'pnotify' => array('scripts' => array('jquery.js')),
         ));

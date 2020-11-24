@@ -28,7 +28,7 @@
     "license": "MIT",
     "require": {
         "php": ">=5.3",
-        "illuminate/support": "^4.0 || ^5.0 || ^6.0 || ^7.0",
+        "illuminate/support": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0",
         "php-notify/notify-laravel": "dev-master",
         "php-notify/notify-toastr": "dev-master"
     },
@@ -38,23 +38,26 @@
     },
     "autoload": {
         "psr-4": {
-            "Notify\\Toastr\\Laravel\\": "src/"
+            "Notify\\Laravel\\Toastr\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Notify\\Toastr\\Laravel\\Tests\\": "tests/"
+            "Notify\\Laravel\\Toastr\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Notify\\Toastr\\Laravel\\NotifyToastrServiceProvider"
+                "Notify\\Laravel\\Toastr\\NotifyToastrServiceProvider"
             ]
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "5.3.3"
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

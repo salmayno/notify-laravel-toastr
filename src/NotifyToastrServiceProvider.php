@@ -1,9 +1,10 @@
 <?php
 
-namespace Notify\Toastr\Laravel;
+namespace Notify\Laravel\Toastr;
 
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
-use Notify\Toastr\Laravel\ServiceProvider\ServiceProviderManager;
+use Notify\Laravel\Toastr\ServiceProvider\ServiceProviderManager;
 
 class NotifyToastrServiceProvider extends ServiceProvider
 {
@@ -30,7 +31,9 @@ class NotifyToastrServiceProvider extends ServiceProvider
     public function provides()
     {
         return array(
-            'notify.toastr',
+            'notify.producer',
+            'notify.producer.toastr',
+            'notify.renderer.toastr',
         );
     }
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Notify\Toastr\Laravel\ServiceProvider\Providers;
+namespace Notify\Laravel\Toastr\ServiceProvider\Providers;
 
-use Notify\Toastr\Laravel\NotifyToastrServiceProvider;
+use Notify\Laravel\Toastr\NotifyToastrServiceProvider;
 
 interface ServiceProviderInterface
 {
@@ -10,7 +10,7 @@ interface ServiceProviderInterface
 
     public function publishConfig(NotifyToastrServiceProvider $provider);
 
-    public function registerNotifyToastrFactory();
+    public function registerNotifyToastrServices();
 
     public function mergeConfigFromToastr();
 }

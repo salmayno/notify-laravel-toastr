@@ -1,9 +1,9 @@
 <?php
 
-namespace Notify\Toastr\Laravel\ServiceProvider;
+namespace Notify\Laravel\Toastr\ServiceProvider;
 
-use Notify\Toastr\Laravel\NotifyToastrServiceProvider;
-use Notify\Toastr\Laravel\ServiceProvider\Providers\ServiceProviderInterface;
+use Notify\Laravel\Toastr\NotifyToastrServiceProvider;
+use Notify\Laravel\Toastr\ServiceProvider\Providers\ServiceProviderInterface;
 
 final class ServiceProviderManager
 {
@@ -13,9 +13,9 @@ final class ServiceProviderManager
      * @var ServiceProviderInterface[]
      */
     private $providers = array(
-        'Yoeunes\Notify\Toastr\Laravel\ServiceProvider\Providers\Laravel4',
-        'Yoeunes\Notify\Toastr\Laravel\ServiceProvider\Providers\Laravel',
-        'Yoeunes\Notify\Toastr\Laravel\ServiceProvider\Providers\Lumen',
+        'Notify\Laravel\Toastr\ServiceProvider\Providers\Laravel4',
+        'Notify\Laravel\Toastr\ServiceProvider\Providers\Laravel',
+        'Notify\Laravel\Toastr\ServiceProvider\Providers\Lumen',
     );
 
     private $notifyServiceProvider;
@@ -36,8 +36,7 @@ final class ServiceProviderManager
     public function register()
     {
         $provider = $this->resolveServiceProvider();
-
-        $provider->registerNotifyToastrFactory();
+        $provider->registerNotifyToastrServices();
     }
 
     /**

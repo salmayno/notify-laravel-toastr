@@ -1,12 +1,14 @@
 <?php
 
-namespace Notify\Toastr\Laravel\ServiceProvider\Providers;
+namespace Notify\Laravel\Toastr\ServiceProvider\Providers;
 
 use Illuminate\Container\Container;
 use Illuminate\Foundation\Application;
-use Notify\NotifyManager;
-use Notify\Toastr\Factory\ToastrFactory;
-use Notify\Toastr\Laravel\NotifyToastrServiceProvider;
+use Notify\Laravel\Toastr\NotifyToastrServiceProvider;
+use Notify\Producer\ProducerManager;
+use Notify\Renderer\RendererManager;
+use Notify\Toastr\Producer\ToastrProducer;
+use Notify\Toastr\Renderer\ToastrRenderer;
 
 class Laravel implements ServiceProviderInterface
 {
@@ -31,16 +33,31 @@ class Laravel implements ServiceProviderInterface
         $provider->mergeConfigFrom($source, 'notify_toastr');
     }
 
-    public function registerNotifyToastrFactory()
+    public function registerNotifyToastrServices()
     {
-        $this->app->bind('notify.toastr', function (Container $app) {
-            return new ToastrFactory();
+        $this->app->bind('notify.producer.toastr', function (Container $app) {
+            return new ToastrProducer($app['notify.storage'], $app['notify.middleware']);
         });
 
-        $this->app->alias('notify.toastr', '\Yoeunes\Notify\Toastr\Factory\ToastrFactory');
+        $this->app->bind('notify.renderer.toastr', function (Container $app) {
+            return new ToastrRenderer(
+                $app['notify.config']->get('adapters.toastr.scripts', array()),
+                $app['notify.config']->get('adapters.toastr.styles', array()),
+                $app['notify.config']->get('adapters.toastr.options', array())
+            );
+        });
 
-        $this->app->extend('notify', function (NotifyManager $manager, Container $app) {
-            $manager->extend('toastr', $app['notify.toastr']);
+        $this->app->alias('notify.producer.toastr', 'Notify\Toastr\Producer\ToastrProducer');
+        $this->app->alias('notify.renderer.toastr', 'Notify\Toastr\Renderer\ToastrRenderer');
+
+        $this->app->extend('notify.producer', function (ProducerManager $manager, Container $app) {
+            $manager->addDriver('toastr', $app['notify.producer.toastr']);
+
+            return $manager;
+        });
+
+        $this->app->extend('notify.renderer', function (RendererManager $manager, Container $app) {
+            $manager->addDriver('toastr', $app['notify.renderer.toastr']);
 
             return $manager;
         });
@@ -48,10 +65,10 @@ class Laravel implements ServiceProviderInterface
 
     public function mergeConfigFromToastr()
     {
-        $notifyConfig = $this->app['config']->get('notify.notifiers.toastr', array());
+        $notifyConfig = $this->app['config']->get('notify.adapters.toastr', array());
 
         $toastrConfig = $this->app['config']->get('notify_toastr', array());
 
-        $this->app['config']->set('notify.notifiers.toastr', array_merge($toastrConfig, $notifyConfig));
+        $this->app['config']->set('notify.adapters.toastr', array_merge($toastrConfig, $notifyConfig));
     }
 }

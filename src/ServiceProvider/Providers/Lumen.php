@@ -1,9 +1,9 @@
 <?php
 
-namespace Notify\Toastr\Laravel\ServiceProvider\Providers;
+namespace Notify\Laravel\Toastr\ServiceProvider\Providers;
 
 use Laravel\Lumen\Application;
-use Notify\Toastr\Laravel\NotifyToastrServiceProvider;
+use Notify\Laravel\Toastr\NotifyToastrServiceProvider;
 
 final class Lumen extends Laravel
 {

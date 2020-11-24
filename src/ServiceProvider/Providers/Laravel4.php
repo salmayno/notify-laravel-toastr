@@ -1,9 +1,9 @@
 <?php
 
-namespace Notify\Toastr\Laravel\ServiceProvider\Providers;
+namespace Notify\Laravel\Toastr\ServiceProvider\Providers;
 
 use Illuminate\Foundation\Application;
-use Notify\Toastr\Laravel\NotifyToastrServiceProvider;
+use Notify\Laravel\Toastr\NotifyToastrServiceProvider;
 
 final class Laravel4 extends Laravel
 {
@@ -19,10 +19,10 @@ final class Laravel4 extends Laravel
 
     public function mergeConfigFromToastr()
     {
-        $notifyConfig = $this->app['config']->get('notify::config.notifiers.toastr', array());
+        $notifyConfig = $this->app['config']->get('notify::config.adapters.toastr', array());
 
         $toastrConfig = $this->app['config']->get('notify_toastr::config', array());
 
-        $this->app['config']->set('notify::config.notifiers.toastr', array_merge($toastrConfig, $notifyConfig));
+        $this->app['config']->set('notify::config.adapters.toastr', array_merge($toastrConfig, $notifyConfig));
     }
 }
