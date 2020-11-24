@@ -15,8 +15,8 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app = null)
     {
         return array(
-            'Notify\Laravel\NotifyServiceProvider',
             'Notify\Laravel\Toastr\NotifyToastrServiceProvider',
+            'Notify\Laravel\NotifyServiceProvider',
         );
     }
 

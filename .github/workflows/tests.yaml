@@ -77,12 +77,12 @@ jobs:
 
                     -   laravel: 4.1.*
                         testbench: 2.1.*
-                        php: 5.3
+                        php: 5.4
                         phpunit: 4.8.*
 
                     -   laravel: 4.0.*
                         testbench: 2.0.6
-                        php: 5.3
+                        php: 5.4
                         phpunit: 4.8.*
 
         name: L${{ matrix.laravel }} - P${{ matrix.php }} - ${{ matrix.dependency-version }}
