@@ -30,7 +30,7 @@ class TestCase extends Orchestra
         $app['config']->set('session'.$separator.'.driver', 'array');
         $app['config']->set('notify'.$separator.'.stamps_middlewares', array());
         $app['config']->set('notify'.$separator.'.adapters', array(
-            'toastr' => array('scripts' => array('jquery.js')),
+            'toastr' => array('scripts' => array('jquery.js'), 'styles' => array('styles.css'), 'options' => array()),
             'pnotify' => array('scripts' => array('jquery.js')),
         ));
     }

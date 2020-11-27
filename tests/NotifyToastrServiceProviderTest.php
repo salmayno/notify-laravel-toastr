@@ -39,7 +39,7 @@ class NotifyToastrServiceProviderTest extends TestCase
         $this->assertEquals(array(
             'toastr' => array(
                 'scripts' => array('jquery.js'),
-                'styles' => array('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css'),
+                'styles' => array('styles.css'),
                 'options' => array(),
             ),
             'pnotify' => array('scripts' => array('jquery.js')),
