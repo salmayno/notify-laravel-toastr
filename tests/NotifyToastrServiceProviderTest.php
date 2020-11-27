@@ -37,12 +37,7 @@ class NotifyToastrServiceProviderTest extends TestCase
         $this->assertArrayHasKey('toastr', $config->get('adapters'));
 
         $this->assertEquals(array(
-            'toastr' => array(
-                'scripts' => array('jquery.js'),
-                'styles' => array('styles.css'),
-                'options' => array(),
-            ),
-            'pnotify' => array('scripts' => array('jquery.js')),
+            'toastr' => array('scripts' => array('jquery.js'), 'styles' => array('styles.css'), 'options' => array()),
         ), $config->get('adapters'));
     }
 }
