@@ -4,13 +4,13 @@ namespace Notify\Laravel\Toastr\Tests;
 
 class NotifyToastrServiceProviderTest extends TestCase
 {
-    public function test_container_contain_notify_services()
+    public function testContainerContainNotifyServices()
     {
         $this->assertTrue($this->app->bound('notify.producer'));
         $this->assertTrue($this->app->bound('notify.producer.toastr'));
     }
 
-    public function test_notify_factory_is_added_to_extensions_array()
+    public function testNotifyFactoryIsAddedToExtensionsArray()
     {
         $manager = $this->app->make('notify.producer');
 
@@ -24,7 +24,7 @@ class NotifyToastrServiceProviderTest extends TestCase
         $this->assertInstanceOf('Notify\Producer\ProducerInterface', $extensions['toastr']);
     }
 
-    public function test_config_toastr_injected_in_global_notify_config()
+    public function testConfigToastrInjectedInGlobalNotifyConfig()
     {
         $manager = $this->app->make('notify.producer');
 
